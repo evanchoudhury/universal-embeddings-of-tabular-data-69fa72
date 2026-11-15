@@ -221,3 +221,7 @@ the numbers in the paper. Details: section 8 of [docs/06_results.md](docs/06_res
 ## License
 
 MIT, see [LICENSE](LICENSE).
+
+## Container check
+
+The Docker image was built and `selfcheck.py` passed inside the container (checked by the agent on 2026-11-16). The Kubernetes manifests were generated but not run on a cluster.
