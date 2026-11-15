@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: universal-tabular-embeddings
+  labels:
+    app: universal-tabular-embeddings
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: universal-tabular-embeddings
+  template:
+    metadata:
+      labels:
+        app: universal-tabular-embeddings
+    spec:
+      containers:
+        - name: dashboard
+          # Built with: docker build -t universal-tabular-embeddings:latest .
+          # For a remote cluster, push the image to your registry and change this line.
+          image: universal-tabular-embeddings:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8501
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+          readinessProbe:
+            httpGet:
+              path: /_stcore/health
+              port: 8501
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /_stcore/health
+              port: 8501
+            initialDelaySeconds: 30
+            periodSeconds: 20

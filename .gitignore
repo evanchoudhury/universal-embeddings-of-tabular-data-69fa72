@@ -1,0 +1,27 @@
+# downloaded datasets (re-created by `python train.py`)
+data/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# virtual environments
+.venv/
+venv/
+env/
+
+# local settings and secrets
+.streamlit/secrets.toml
+.env
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# NOTE: artifacts/ is committed on purpose so that results and the dashboard work after a clone.

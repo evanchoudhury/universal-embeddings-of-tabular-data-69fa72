@@ -1,0 +1,7 @@
+services:
+  dashboard:
+    build: .
+    image: universal-tabular-embeddings:latest
+    ports:
+      - "8501:8501"
+    restart: unless-stopped
