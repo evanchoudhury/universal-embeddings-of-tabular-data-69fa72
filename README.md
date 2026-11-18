@@ -1,6 +1,8 @@
 # Universal Embeddings of Tabular Data
 
-**Project website:** [https://universal-embeddings-of-tabular-dat.vercel.app](https://universal-embeddings-of-tabular-dat.vercel.app) - results, graphs, screenshots and the full research write-up.
+**Live dashboard:** [https://universal-embeddings-of-tabular-dat.vercel.app](https://universal-embeddings-of-tabular-dat.vercel.app) - the full interactive dashboard (all tabs, live predictions) running in your browser; nothing to install. The first visit takes about a minute to load.
+
+
 
 
 A from-scratch, CPU-only reproduction of the entity-graph auto-encoder from the paper
@@ -167,7 +169,8 @@ image to your registry and change `image:` in `k8s/deployment.yaml`. The pod is 
 |   |-- tokeniser.py           table -> entities, soft-binned row-entity matrix
 |   |-- graph.py               reduced entity graph, targets, GCN normalisation
 |   |-- gae.py                 one-layer graph auto-encoder (PyTorch)
-|   |-- embed.py               UniversalEmbedder: fit, transform, predict, save/load
+|   |-- embed.py               UniversalEmbedder: GAE fitting (torch, training only)
+|   |-- inference.py           EmbeddingPredictor: transform, predict, save/load (torch-free, used by app.py)
 |   |-- model.py               main model and baseline model in one place
 |   |-- baselines.py           raw features, PCA, spectral, skip-gram, logistic regression, XGBoost
 |   |-- evaluate.py            k-NN heads, metrics, outlier scores

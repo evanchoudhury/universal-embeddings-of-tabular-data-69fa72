@@ -39,7 +39,8 @@ src/data.py               load, clean, split
 src/tokeniser.py          TableTokeniser: entities, soft bins, row-entity matrix B
 src/graph.py              reduced graph A, targets T / S, propagation matrix P
 src/gae.py                EntityGAE and training loop
-src/embed.py              row embeddings, save/load of the fitted pipeline
+src/embed.py              GAE fitting of the pipeline (torch, training only)
+src/inference.py          row embeddings, k-NN heads, save/load (torch-free, dashboard)
 src/baselines.py          raw k-NN, PCA, spectral, skip-gram, LogReg, XGBoost
 src/evaluate.py           k-NN heads, classification / regression / outlier / neighbour metrics
 src/plots.py              matplotlib figures

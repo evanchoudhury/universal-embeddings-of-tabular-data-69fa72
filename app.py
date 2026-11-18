@@ -51,8 +51,8 @@ def load_npz(name):
 
 @st.cache_resource(show_spinner="Loading the trained model ...")
 def load_model():
-    from src.embed import UniversalEmbedder
-    return UniversalEmbedder.load(ART / "model.joblib")
+    from src.inference import EmbeddingPredictor  # torch-free (training code stays in train.py)
+    return EmbeddingPredictor.load(ART / "model.joblib")
 
 
 @st.cache_resource(show_spinner=False)

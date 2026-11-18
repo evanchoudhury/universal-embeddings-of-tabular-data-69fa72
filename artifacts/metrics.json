@@ -477,14 +477,14 @@
       ]
     },
     "timings_seconds": {
-      "data": 0.23,
+      "data": 0.27,
       "graph": 0.07,
-      "gae_main": 41.76,
-      "baselines": 8.75,
-      "dimension_sweep": 62.84,
-      "universality": 9.8,
-      "saving_and_plots": 2.72,
-      "total": 126.25
+      "gae_main": 45.86,
+      "baselines": 8.46,
+      "dimension_sweep": 67.4,
+      "universality": 10.62,
+      "saving_and_plots": 3.08,
+      "total": 135.82
     },
     "plots": [
       "01_data_overview.png",
@@ -528,5 +528,5 @@
   },
   "n_train": 34188,
   "n_test": 7327,
-  "train_seconds": 126.25
+  "train_seconds": 135.82
 }
