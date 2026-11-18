@@ -1,5 +1,8 @@
 # Universal Embeddings of Tabular Data
 
+**Project website:** [https://universal-embeddings-of-tabular-dat.vercel.app](https://universal-embeddings-of-tabular-dat.vercel.app) - results, graphs, screenshots and the full research write-up.
+
+
 A from-scratch, CPU-only reproduction of the entity-graph auto-encoder from the paper
 *Universal Embeddings of Tabular Data* (arXiv:2507.05904), tested on the Adult Census Income
 table. The pipeline turns every table row into a 16-number vector **without ever looking at a
