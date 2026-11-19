@@ -83,7 +83,8 @@ canvas{position:absolute;inset:0;width:100%;height:100%}
 .legend i{display:inline-block;width:9px;height:9px;margin-right:8px;vertical-align:-1px}
 </style></head><body><div class="hud"><canvas id="c"></canvas><div class="bar" id="bar"></div><div class="legend" id="leg"></div></div>
 <script>
-const D=__DATA__, L=D.look||{}, P=L.colors||["#5EEAD4","#60A5FA","#A78BFA"], BAD="#FF5A6E";
+const D=__DATA__, L=D.look||{}, P=L.colors||["#5EEAD4","#60A5FA","#A78BFA"], BAD=L.bad||"#FF5A6E", BG=L.bg||"#04070d";
+document.querySelector(".hud").style.background=BG;
 const VAR=L.variant||{segs:84,spin:1,style:"lines",gap:.28,offset:.6};
 const fmt=v=>Math.abs(v)<10?v.toFixed(3):v.toLocaleString(undefined,{maximumFractionDigits:1});
 document.getElementById("bar").innerHTML=D.kpis.filter(k=>k[1]!=null).map(k=>`<div>${k[0]}<b>${typeof k[1]=="number"?k[1].toLocaleString():k[1]}</b></div>`).join("");
@@ -99,7 +100,7 @@ new IntersectionObserver(e=>run=e[0].isIntersecting).observe(cv);
 function frame(){
   if(run||t===0){
   t+=1/60; grow=Math.min(1,grow+.012); const ease=1-Math.pow(1-grow,3);
-  g.globalCompositeOperation="source-over"; g.fillStyle="#04070d"; g.fillRect(0,0,W,H);
+  g.globalCompositeOperation="source-over"; g.fillStyle=BG; g.fillRect(0,0,W,H);
   const core=g.createRadialGradient(cx,cy,0,cx,cy,R*.55); core.addColorStop(0,P[n>2?2:0]+"55"); core.addColorStop(1,"transparent");
   g.fillStyle=core; g.beginPath(); g.arc(cx,cy,R*.55,0,7); g.fill();
   g.globalCompositeOperation="lighter";
@@ -108,7 +109,9 @@ function frame(){
   S.forEach((s,i)=>{ const a=i/S.length*Math.PI*2+rot, fl=.82+.18*Math.sin(t*2.2+i*1.7);
     const r0=R*1.04, len=(R*.15+s[0]*R*.75)*ease*fl;
     g.strokeStyle=s[1]?BAD:P[i%2?0:1]; g.globalAlpha=s[1]?.9:.45+.4*s[0];
-    if(VAR.style=="bars"){ g.lineWidth=3; g.beginPath(); g.moveTo(cx+Math.cos(a)*r0,cy+Math.sin(a)*r0);
+    if(VAR.style=="dots"){ g.fillStyle=g.strokeStyle; for(let q=0;q<len;q+=7){ g.globalAlpha=(s[1]?.9:.7)*(1-q/len);
+      g.beginPath(); g.arc(cx+Math.cos(a)*(r0+q),cy+Math.sin(a)*(r0+q),1.3,0,7); g.fill(); } }
+    else if(VAR.style=="bars"){ g.lineWidth=3; g.beginPath(); g.moveTo(cx+Math.cos(a)*r0,cy+Math.sin(a)*r0);
       g.lineTo(cx+Math.cos(a)*(r0+len),cy+Math.sin(a)*(r0+len)); g.stroke(); }
     else { const grd=g.createLinearGradient(cx+Math.cos(a)*r0,cy+Math.sin(a)*r0,cx+Math.cos(a)*(r0+len),cy+Math.sin(a)*(r0+len));
       grd.addColorStop(0,g.strokeStyle); grd.addColorStop(1,"transparent"); g.strokeStyle=grd; g.lineWidth=1.3;
