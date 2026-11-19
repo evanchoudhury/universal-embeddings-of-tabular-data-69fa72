@@ -17,11 +17,11 @@
 [data-testid="stMetric"]{padding:16px 18px}
 [data-testid="stPlotlyChart"],[data-testid="stDataFrame"],[data-testid="stImage"]{padding:8px;overflow:hidden}
 [data-testid="stMetricValue"]{font-weight:700;color:var(--p)}
-.stTabs [data-baseweb="tab-list"]{gap:4px;padding:5px;background:var(--glass);backdrop-filter:blur(14px);
+.stTabs [data-baseweb="tab-list"],.stTabs [role="tablist"]{height:auto;box-shadow:none;gap:4px;padding:5px;background:var(--glass);backdrop-filter:blur(14px);
   border:1px solid var(--edge);border-radius:999px;width:fit-content;max-width:100%;overflow-x:auto}
-.stTabs [data-baseweb="tab"]{border-radius:999px;padding:6px 16px;height:auto}
+.stTabs [data-baseweb="tab"],.stTabs [role="tab"]{border-radius:999px;padding:6px 16px;height:auto;border:0}
 .stTabs [aria-selected="true"]{background:color-mix(in srgb,var(--p) 22%,transparent);box-shadow:inset 0 1px 0 var(--shine)}
-.stTabs [data-baseweb="tab-highlight"],.stTabs [data-baseweb="tab-border"]{display:none}
+.stTabs [data-baseweb="tab-highlight"],.stTabs [data-baseweb="tab-border"],.stTabs .react-aria-SelectionIndicator{display:none}
 .stButton>button,.stDownloadButton>button,.stFormSubmitButton>button{border-radius:999px;border:1px solid var(--edge);
   background:linear-gradient(180deg,color-mix(in srgb,var(--p) 85%,white),var(--p));color:#03171B;font-weight:600;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 6px 18px -8px var(--p)}
