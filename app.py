@@ -29,6 +29,9 @@ GROUP_COLORS = {"Main model": "#d95f02", "Raw features + k-NN": "#7570b3",
                 "Supervised (uses labels)": "#666666", "Trivial": "#bbbbbb"}
 
 st.set_page_config(page_title="Universal Embeddings of Tabular Data", layout="wide")
+# dashboard-theme (agent/dashboard_theme.py): glass look, see .streamlit/theme.css
+_css = __import__('pathlib').Path(__file__).with_name('.streamlit') / 'theme.css'
+if _css.is_file(): st.markdown('<style>' + _css.read_text(encoding='utf-8') + '</style>', unsafe_allow_html=True)
 
 
 # ------------------------------------------------------------------ loading (cached)

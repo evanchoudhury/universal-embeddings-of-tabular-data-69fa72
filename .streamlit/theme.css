@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+:root{--p:#22D3EE;--glass:rgba(255,255,255,.055);--edge:rgba(255,255,255,.13);--shine:rgba(255,255,255,.16);--drop:rgba(0,0,0,.45)}
+.stApp{background:
+  radial-gradient(42rem 30rem at 8% -6%,#0891B255,transparent 70%),
+  radial-gradient(38rem 28rem at 100% 12%,#04785755,transparent 70%),
+  radial-gradient(46rem 34rem at 45% 115%,#155E7555,transparent 70%),#03171B;background-attachment:fixed}
+.stApp,.stApp p,.stApp li,.stApp label,.stApp h1,.stApp h2,.stApp h3,.stApp h4,.stApp button,.stApp input,
+.stApp textarea,[data-testid="stMetricValue"],[data-testid="stMarkdownContainer"]{font-family:'Outfit',system-ui,sans-serif}
+.stApp h1{font-weight:700;letter-spacing:-.02em}
+[data-testid="stHeader"]{background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--edge)}
+[data-testid="stSidebar"]>div:first-child{background:var(--glass);backdrop-filter:blur(18px) saturate(150%);border-right:1px solid var(--edge)}
+[data-testid="stMetric"],[data-testid="stExpander"] details,[data-testid="stVerticalBlockBorderWrapper"]:has(>div>[data-testid="stVerticalBlock"]),
+[data-testid="stDataFrame"],[data-testid="stPlotlyChart"],[data-testid="stImage"],[data-testid="stAlert"],[data-testid="stForm"]{
+  background:linear-gradient(160deg,var(--shine),transparent 38%),var(--glass);
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+  border:1px solid var(--edge);border-radius:18px;box-shadow:inset 0 1px 0 var(--shine),0 10px 30px -12px var(--drop)}
+[data-testid="stMetric"]{padding:16px 18px}
+[data-testid="stPlotlyChart"],[data-testid="stDataFrame"],[data-testid="stImage"]{padding:8px;overflow:hidden}
+[data-testid="stMetricValue"]{font-weight:700;color:var(--p)}
+.stTabs [data-baseweb="tab-list"]{gap:4px;padding:5px;background:var(--glass);backdrop-filter:blur(14px);
+  border:1px solid var(--edge);border-radius:999px;width:fit-content;max-width:100%;overflow-x:auto}
+.stTabs [data-baseweb="tab"]{border-radius:999px;padding:6px 16px;height:auto}
+.stTabs [aria-selected="true"]{background:color-mix(in srgb,var(--p) 22%,transparent);box-shadow:inset 0 1px 0 var(--shine)}
+.stTabs [data-baseweb="tab-highlight"],.stTabs [data-baseweb="tab-border"]{display:none}
+.stButton>button,.stDownloadButton>button,.stFormSubmitButton>button{border-radius:999px;border:1px solid var(--edge);
+  background:linear-gradient(180deg,color-mix(in srgb,var(--p) 85%,white),var(--p));color:#03171B;font-weight:600;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 6px 18px -8px var(--p)}
+.stButton>button:hover,.stDownloadButton>button:hover{filter:brightness(1.08);color:#03171B;border-color:var(--edge)}
