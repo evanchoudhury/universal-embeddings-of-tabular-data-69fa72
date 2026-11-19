@@ -1085,6 +1085,8 @@ def tab_try(m, test_rows, sample):
                "including its social biases, and must not be used to judge real people.")
 
 
+import ui_rings  # dashboard-rings: headline results as ring gauges
+ui_rings.hero()
 def tab_research():
     names = [("Literature survey", "01_literature_survey.md"),
              ("Problem definition", "02_problem_definition.md"),
