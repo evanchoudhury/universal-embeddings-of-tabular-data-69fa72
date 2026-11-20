@@ -43,6 +43,21 @@ def _samples(limit=300):
     return out
 
 
+def _xgb(tree, key, under=False):
+    """XGBoost's score on the SAME metric, wherever the project stored it (None if not comparable)."""
+    if not isinstance(tree, dict):
+        return None
+    if under:
+        for d in (tree.get("test"), tree):
+            if isinstance(d, dict) and isinstance(d.get(key), (int, float)):
+                return d[key]
+    for k, v in tree.items():
+        hit = _xgb(v, key, under or "xgboost" in str(k).lower())
+        if hit is not None:
+            return hit
+    return None
+
+
 def hero():
     try:
         m = json.loads((HERE / "artifacts" / "metrics.json").read_text(encoding="utf-8"))
@@ -54,8 +69,7 @@ def hero():
     except Exception:
         look = {}
     up = bool(m.get("higher_is_better", True))
-    x = (m.get("metrics") or {}).get("xgboost")
-    x = x.get(m.get("primary_metric")) if isinstance(x, dict) else None
+    x = _xgb(m.get("metrics") or {}, m.get("primary_metric"))
     rings = [["Our model", v], ["XGBoost", float(x)] if isinstance(x, (int, float)) else None, ["Baseline", b]]
     rings = [r for r in rings if r]
     vals = [r[1] for r in rings]
